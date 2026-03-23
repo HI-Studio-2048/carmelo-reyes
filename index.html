@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CARMELO REYES — MIAMI VICES &amp; GOOD VIBES</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@300;400;700&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="ld-word">
+    <span>C</span><span>A</span><span>R</span><span>M</span><span>E</span><span>L</span><span>O</span>
+  </div>
+  <div class="ld-bar"><div class="ld-fill" id="ldFill"></div></div>
+  <div class="ld-num" id="ldNum">000</div>
+</div>
+
+<!-- CURSOR -->
+<div class="cur-dot" id="curDot"></div>
+<div class="cur-ring" id="curRing"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">CR.<span class="live-dot"></span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#vault">The Vault</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section id="hero">
+  <canvas id="heroCanvas"></canvas>
+  <div class="hero-scanlines"></div>
+  <div class="hero-vignette"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow" id="hEye">// EST. MIAMI, FL — 2001</div>
+
+    <div class="marquee-wrap">
+      <div class="marquee-track">
+        <span class="hero-name">CARMELO REYES&nbsp;&nbsp;&nbsp;</span>
+        <span class="hero-name outline">CARMELO REYES&nbsp;&nbsp;&nbsp;</span>
+        <span class="hero-name outline2">CARMELO REYES&nbsp;&nbsp;&nbsp;</span>
+        <span class="hero-name">CARMELO REYES&nbsp;&nbsp;&nbsp;</span>
+        <span class="hero-name outline">CARMELO REYES&nbsp;&nbsp;&nbsp;</span>
+        <span class="hero-name outline2">CARMELO REYES&nbsp;&nbsp;&nbsp;</span>
+      </div>
+    </div>
+
+    <div class="hero-sub" id="hSub">
+      <p class="hero-subtext">MIAMI VICES <em>&amp;</em> GOOD VIBES</p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="hero-cta-wrap" id="hCta">
+      <a href="#about" class="btn-chaos magnetic" id="heroBtnEl">
+        <span>Enter the Chaos</span>
+        <span class="arr">→</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-stats" id="hStats">
+    <div><span class="stat-num">12.4M</span><span class="stat-lbl">TikTok Followers</span></div>
+    <div><span class="stat-num">8.1M</span><span class="stat-lbl">Instagram</span></div>
+    <div><span class="stat-num">3.2M</span><span class="stat-lbl">YouTube Subs</span></div>
+  </div>
+
+  <div class="hero-scroll" id="hScroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ══════════════ ABOUT ══════════════ -->
+<section id="about">
+  <div class="sec-label">Section 01</div>
+  <h2 class="sec-title" id="titleAbout">THE LEGEND</h2>
+
+  <div class="about-body" id="aboutBody">
+    <p>Born and raised in <strong>Miami, FL</strong>, Carmelo Reyes is the internet's favourite chaos agent. Part content creator, part fashion icon, part hype machine — 100% unfiltered.</p>
+    <p>From Wynwood walls to Brickell penthouses, Carmelo captures the raw energy of Miami's new generation. <strong>No filter. No rules. Full send.</strong></p>
+    <div class="tags">
+      <span class="tag">Fashion</span><span class="tag">Lifestyle</span>
+      <span class="tag">Miami</span><span class="tag">Music</span>
+      <span class="tag">Content</span><span class="tag">Chaos</span>
+      <span class="tag">Merch</span><span class="tag">IRL Events</span>
+    </div>
+  </div>
+
+  <div class="sec-label gallery-section-label">The Archive</div>
+
+  <div class="pol-wrap">
+    <div class="pol-gallery" id="polGallery">
+      <div class="pol" data-tilt data-tilt-max="9" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.25">
+        <div class="pol-img"><div class="pol-img-inner p1"></div></div>
+        <div class="pol-date">2024-03</div><div class="pol-caption">Miami Sunsets ☀️</div>
+      </div>
+      <div class="pol" data-tilt data-tilt-max="9" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.25">
+        <div class="pol-img"><div class="pol-img-inner p2"></div></div>
+        <div class="pol-date">2024-01</div><div class="pol-caption">Wynwood Nights</div>
+      </div>
+      <div class="pol" data-tilt data-tilt-max="9" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.25">
+        <div class="pol-img"><div class="pol-img-inner p3"></div></div>
+        <div class="pol-date">2023-12</div><div class="pol-caption">South Beach 🏖️</div>
+      </div>
+      <div class="pol" data-tilt data-tilt-max="9" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.25">
+        <div class="pol-img"><div class="pol-img-inner p4"></div></div>
+        <div class="pol-date">2023-11</div><div class="pol-caption">Art Basel Vibes</div>
+      </div>
+      <div class="pol" data-tilt data-tilt-max="9" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.25">
+        <div class="pol-img"><div class="pol-img-inner p5"></div></div>
+        <div class="pol-date">2023-09</div><div class="pol-caption">Biscayne Heat 🌴</div>
+      </div>
+      <div class="pol" data-tilt data-tilt-max="9" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.25">
+        <div class="pol-img"><div class="pol-img-inner p6"></div></div>
+        <div class="pol-date">2023-07</div><div class="pol-caption">Rooftop Session</div>
+      </div>
+      <div class="pol" data-tilt data-tilt-max="9" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.25">
+        <div class="pol-img"><div class="pol-img-inner p7"></div></div>
+        <div class="pol-date">2023-05</div><div class="pol-caption">Drop Day 🔥</div>
+      </div>
+      <div class="pol" data-tilt data-tilt-max="9" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.25">
+        <div class="pol-img"><div class="pol-img-inner p8"></div></div>
+        <div class="pol-date">2023-02</div><div class="pol-caption">Full Send 🚀</div>
+      </div>
+    </div>
+    <p class="drag-hint">← Drag to explore the archive →</p>
+  </div>
+</section>
+
+<!-- ══════════════ VAULT ══════════════ -->
+<section id="vault">
+  <div class="sec-label">Section 02</div>
+  <h2 class="sec-title" id="titleVault">THE VAULT</h2>
+
+  <div class="bento" id="bento">
+    <a href="#" class="bc" data-p="tiktok">
+      <div><div class="bc-icon">⬛</div><div class="bc-name">TikTok</div></div>
+      <div class="bc-stat"><b>12.4M</b> FOLLOWERS · 280M+ VIEWS</div>
+      <span class="bc-arrow">↗</span>
+    </a>
+    <a href="#" class="bc" data-p="youtube">
+      <div><div class="bc-icon">▶</div><div class="bc-name">YouTube</div></div>
+      <div class="bc-stat"><b>3.2M</b> SUBSCRIBERS</div>
+      <span class="bc-arrow">↗</span>
+    </a>
+    <a href="#" class="bc" data-p="instagram">
+      <div><div class="bc-icon">◉</div><div class="bc-name">Instagram</div></div>
+      <div class="bc-stat"><b>8.1M</b> FOLLOWERS</div>
+      <span class="bc-arrow">↗</span>
+    </a>
+    <a href="#" class="bc" data-p="merch">
+      <div><div class="bc-icon">◈</div><div class="bc-name">Merch Drop</div></div>
+      <div class="bc-stat">LATEST — <b>MIAMI CHAOS VOL.3</b></div>
+      <span class="bc-arrow">↗</span>
+    </a>
+    <a href="#" class="bc" data-p="spotify">
+      <div><div class="bc-icon">◎</div><div class="bc-name">Spotify</div></div>
+      <div class="bc-stat"><b>VIBES ONLY</b> PLAYLIST</div>
+      <span class="bc-arrow">↗</span>
+    </a>
+    <a href="#" class="bc" data-p="twitch">
+      <div><div class="bc-icon">◆</div><div class="bc-name">Twitch</div></div>
+      <div class="bc-stat"><b>892K</b> FOLLOWERS</div>
+      <span class="bc-arrow">↗</span>
+    </a>
+    <a href="#" class="bc" data-p="twitter">
+      <div><div class="bc-icon">𝕏</div><div class="bc-name">Twitter/X</div></div>
+      <div class="bc-stat"><b>5.4M</b> FOLLOWING</div>
+      <span class="bc-arrow">↗</span>
+    </a>
+    <a href="#" class="bc" data-p="newsletter">
+      <div><div class="bc-icon">✦</div><div class="bc-name">Newsletter</div></div>
+      <div class="bc-stat"><b>CHAOS WEEKLY</b> DROP</div>
+      <span class="bc-arrow">↗</span>
+    </a>
+  </div>
+</section>
+
+<!-- ══════════════ CONTACT ══════════════ -->
+<section id="contact">
+  <div class="contact-glow"></div>
+  <div class="sec-label">Section 03</div>
+
+  <div class="hmu-text" id="hmu">
+    <span class="w1">HIT </span><span class="w2">ME </span><span class="w3">UP</span>
+  </div>
+
+  <div class="contact-row" id="contactRow">
+    <div class="ci">
+      <h3>Collabs &amp; Brand Deals</h3>
+      <a href="mailto:collabs@carmeloreyes.com">collabs@carmeloreyes.com</a>
+    </div>
+    <div class="ci">
+      <h3>Management</h3>
+      <a href="mailto:mgmt@carmeloreyes.com">mgmt@carmeloreyes.com</a>
+    </div>
+    <div class="ci">
+      <h3>Based In</h3>
+      <p>Miami, FL 🌴</p>
+    </div>
+    <div class="contact-cta">
+      <a href="mailto:collabs@carmeloreyes.com" class="btn-hit magnetic">
+        <span>Send It →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2024 Carmelo Reyes. All Rights Reserved.</p>
+  <div class="foot-logo">CARMELO REYES</div>
+  <p>Miami, FL · EST. 2001</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
