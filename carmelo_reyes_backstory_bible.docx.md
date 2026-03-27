@@ -22,7 +22,7 @@ eSIM Launch — 2026
 | Net Worth Claim | $1.2M+ (built in under 2 years) |
 | Education | Dropped out of community college, self-taught |
 | Relationship | Single, focused on the grind |
-| Platforms | Instagram (@carmeloreyes), TikTok (@carmeloreyes) |
+| Platforms | Instagram (@carmeloareyes), TikTok (@carmeloreyes) |
 
 ## **1.2 Origin Story**
 
@@ -94,7 +94,7 @@ He went all in. Put his last $500 into it. Started marketing on TikTok and Insta
 
 ## **3.1 Platform Focus**
 
-**Primary:** Instagram (@carmeloreyes) \+ TikTok (@carmeloreyes)
+**Primary:** Instagram (@carmeloareyes) \+ TikTok (@carmeloreyes)
 
 **Strategy:** Start with these two platforms only. Build consistent posting rhythm and audience before expanding. TikTok for discovery (algorithm-driven reach), Instagram for credibility and community (grid aesthetic, Stories, DMs).
 
@@ -173,7 +173,7 @@ Niche: \#esim \#esimbusiness \#telecom \#digitalentrepreneur \#passiveincome2026
 
 Broad: \#makemoneyonline \#sidehustle \#entrepreneurlife \#financialfreedom
 
-Personal: \#carmeloreyes \#miamientrepreneur \#genzbusiness
+Personal: \#carmeloareyes \#carmeloreyes \#miamientrepreneur \#genzbusiness
 
 **TikTok:** 3–5 hashtags max. Focus on discovery: \#esim \#makemoneyonline \#sidehustle \#business \#entrepreneur
 

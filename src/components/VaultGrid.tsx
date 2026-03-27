@@ -3,11 +3,34 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import type { LucideIcon } from 'lucide-react'
+import {
+  ArrowUpRight,
+  BookOpen,
+  Camera,
+  GraduationCap,
+  Mail,
+  MoreHorizontal,
+  Music2,
+  Rocket,
+  Sparkles,
+} from 'lucide-react'
 
-const vaultItems = [
+type VaultItem = {
+  name: string
+  Icon: LucideIcon
+  stat: string
+  href: string
+  hoverColor: string
+  span: string
+  nameSize: string
+  comingSoon?: boolean
+}
+
+const vaultItems: VaultItem[] = [
   {
     name: 'eSIM Launch',
-    icon: '🚀',
+    Icon: Rocket,
     stat: 'THE PLATFORM I USED',
     href: 'https://www.esimlaunch.com/',
     hoverColor: '#E85D26',
@@ -16,7 +39,7 @@ const vaultItems = [
   },
   {
     name: 'Free Lesson',
-    icon: '📖',
+    Icon: BookOpen,
     stat: 'START HERE — FREE',
     href: '/free-lesson',
     hoverColor: '#10B981',
@@ -25,7 +48,7 @@ const vaultItems = [
   },
   {
     name: 'The Course',
-    icon: '🎓',
+    Icon: GraduationCap,
     stat: '5 LESSONS · $49',
     href: '/course',
     hoverColor: '#FF6B35',
@@ -34,25 +57,25 @@ const vaultItems = [
   },
   {
     name: 'Instagram',
-    icon: '◉',
-    stat: '@CARMELOREYES',
-    href: '#',
+    Icon: Camera,
+    stat: '@carmeloareyes',
+    href: 'https://www.instagram.com/carmeloareyes/',
     hoverColor: '#E1306C',
     span: 'col-span-2',
     nameSize: 'text-xl',
   },
   {
     name: 'TikTok',
-    icon: '♪',
-    stat: '@CARMELOREYES',
-    href: '#',
+    Icon: Music2,
+    stat: '@carmeloreyes',
+    href: 'https://www.tiktok.com/@carmeloreyes',
     hoverColor: '#00F2EA',
     span: '',
     nameSize: 'text-xl',
   },
   {
     name: 'Blog',
-    icon: '✦',
+    Icon: Sparkles,
     stat: 'ESIM TIPS & INSIGHTS',
     href: '/blog',
     hoverColor: '#E85D26',
@@ -61,7 +84,7 @@ const vaultItems = [
   },
   {
     name: 'Newsletter',
-    icon: '📧',
+    Icon: Mail,
     stat: 'WEEKLY DROPS',
     href: '#newsletter',
     hoverColor: '#FF8C00',
@@ -69,15 +92,19 @@ const vaultItems = [
     nameSize: 'text-xl',
   },
   {
-    name: 'Twitter/X',
-    icon: '𝕏',
-    stat: '@CARMELOREYES',
-    href: '#',
-    hoverColor: '#1DA1F2',
+    name: 'More',
+    Icon: MoreHorizontal,
+    stat: 'Coming soon',
+    href: '',
+    hoverColor: '#737373',
     span: '',
     nameSize: 'text-xl',
+    comingSoon: true,
   },
 ]
+
+const iconClass =
+  'h-7 w-7 shrink-0 text-neutral-400 transition-colors duration-300 stroke-[1.5]'
 
 export default function VaultGrid() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -110,38 +137,50 @@ export default function VaultGrid() {
 
         <div className="vault-grid grid grid-cols-2 md:grid-cols-4 gap-3">
           {vaultItems.map((item, i) => {
+            const isComingSoon = Boolean(item.comingSoon)
             const isExternal = item.href.startsWith('http')
-            const Tag = isExternal ? 'a' : 'a'
+            const Tag = isComingSoon ? 'div' : 'a'
+            const Icon = item.Icon
             return (
               <Tag
                 key={i}
-                href={item.href}
-                {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                className={`vault-card group relative flex flex-col justify-between min-h-[150px] p-6 bg-[#141414] border border-[#262626] rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:scale-[1.01] ${item.span}`}
+                {...(!isComingSoon ? { href: item.href } : {})}
+                {...(!isComingSoon && isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                className={`vault-card group relative flex flex-col justify-between min-h-[150px] p-6 bg-[#141414] border border-[#262626] rounded-xl overflow-hidden transition-all duration-300 ${
+                  isComingSoon ? 'cursor-default opacity-90' : 'hover:-translate-y-1.5 hover:scale-[1.01]'
+                } ${item.span}`}
                 style={{
                   // @ts-expect-error CSS custom property
                   '--hover-color': item.hoverColor,
                 }}
                 onMouseEnter={(e) => {
+                  if (isComingSoon) return
                   const el = e.currentTarget as HTMLElement
                   el.style.borderColor = item.hoverColor
                   el.style.boxShadow = `0 12px 48px rgba(0,0,0,0.5), 0 0 40px ${item.hoverColor}25`
+                  const icon = el.querySelector('[data-vault-icon]')
+                  if (icon) (icon as HTMLElement).style.color = item.hoverColor
                 }}
                 onMouseLeave={(e) => {
+                  if (isComingSoon) return
                   const el = e.currentTarget as HTMLElement
                   el.style.borderColor = '#262626'
                   el.style.boxShadow = 'none'
+                  const icon = el.querySelector('[data-vault-icon]')
+                  if (icon) (icon as HTMLElement).style.color = ''
                 }}
               >
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-br from-white/[0.04] to-transparent pointer-events-none" />
 
                 <div className="relative">
-                  <div className="text-2xl mb-1.5">{item.icon}</div>
+                  <div className="mb-1.5" data-vault-icon>
+                    <Icon className={iconClass} aria-hidden />
+                  </div>
                   <div className={`font-bold ${item.nameSize} transition-colors`}
                     style={{ color: 'white' }}
                     ref={(el) => {
-                      if (!el) return
+                      if (!el || item.comingSoon) return
                       const parent = el.closest('.vault-card')
                       parent?.addEventListener('mouseenter', () => { el.style.color = item.hoverColor })
                       parent?.addEventListener('mouseleave', () => { el.style.color = 'white' })
@@ -155,9 +194,11 @@ export default function VaultGrid() {
                   <span className="text-[11px] text-neutral-500 tracking-wider">
                     {item.stat}
                   </span>
-                  <span className="text-base opacity-0 -translate-x-1 translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0">
-                    ↗
-                  </span>
+                  {!isComingSoon && (
+                    <span className="text-base opacity-0 -translate-x-1 translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0">
+                      <ArrowUpRight className="h-4 w-4 text-neutral-500 group-hover:text-white" strokeWidth={2} aria-hidden />
+                    </span>
+                  )}
                 </div>
               </Tag>
             )

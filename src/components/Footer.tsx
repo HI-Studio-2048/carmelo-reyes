@@ -7,8 +7,8 @@ const footerLinks = [
 ];
 
 const socialLinks = [
-  { href: '#', label: 'Instagram' },
-  { href: '#', label: 'TikTok' },
+  { href: 'https://www.instagram.com/carmeloareyes/', label: 'Instagram' },
+  { href: 'https://www.tiktok.com/@carmeloreyes', label: 'TikTok' },
 ];
 
 export default function Footer() {
