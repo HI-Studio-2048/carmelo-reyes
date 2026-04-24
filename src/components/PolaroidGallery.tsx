@@ -1,17 +1,18 @@
 'use client'
 
+import Image from 'next/image'
 import { useRef, useState, useCallback } from 'react'
 
 const polaroids = [
-  { caption: 'Miami Sunsets', date: '2026-03', gradient: 'linear-gradient(135deg, #E85D26, #FF6B35 45%, #FFD700)' },
-  { caption: 'Brickell Views', date: '2026-01', gradient: 'linear-gradient(45deg, #E85D26, #1A1A1A 50%, #FF6B35)' },
-  { caption: 'Office Setup', date: '2025-12', gradient: 'linear-gradient(180deg, #FFD700, #E85D26 50%, #0A0A0A)' },
-  { caption: 'The M4', date: '2025-11', gradient: 'linear-gradient(135deg, #141414, #E85D26)' },
+  { caption: 'Miami Sunsets', date: '2026-03', imageSrc: '/images/carmelo/gallery/miami_sunsets.png' },
+  { caption: 'Brickell Views', date: '2026-01', imageSrc: '/images/carmelo/gallery/brickell_views.png' },
+  { caption: 'Office Setup', date: '2025-12', imageSrc: '/images/carmelo/gallery/office_setup.png' },
+  { caption: 'The M4', date: '2025-11', imageSrc: '/images/carmelo/gallery/the_m4.png' },
   { caption: 'First $1M', date: '2025-09', gradient: 'linear-gradient(90deg, #FF6B35, #E85D26 50%, #FFD700)' },
   { caption: 'Launch Day', date: '2025-07', gradient: 'linear-gradient(225deg, #E85D26, #0A0A0A 50%, #FF6B35)' },
   { caption: 'Gym Session', date: '2025-05', gradient: 'linear-gradient(315deg, #FFD700, #E85D26 60%, #141414)' },
   { caption: 'Day One', date: '2024-12', gradient: 'linear-gradient(45deg, #E85D26, #FF6B35 30%, #FFD700 70%, #E85D26)' },
-]
+] as const
 
 const rotations = [-3, 2, -1.5, 3, -2.5, 1, -4, 2.5]
 
@@ -58,12 +59,23 @@ export default function PolaroidGallery() {
             {/* Tape effect */}
             <div className="absolute -top-[10px] left-1/2 -translate-x-1/2 w-9 h-4 bg-amber-100/40 z-10" />
 
-            {/* Image placeholder */}
-            <div className="w-full aspect-square overflow-hidden">
-              <div
-                className="w-full h-full transition-transform duration-500 hover:scale-110"
-                style={{ background: p.gradient }}
-              />
+            {/* Photo or gradient placeholder */}
+            <div className="relative w-full aspect-square overflow-hidden bg-neutral-100">
+              {'imageSrc' in p && p.imageSrc ? (
+                <Image
+                  src={p.imageSrc}
+                  alt={p.caption}
+                  fill
+                  className="object-cover transition-transform duration-500 hover:scale-110"
+                  sizes="210px"
+                  unoptimized
+                />
+              ) : (
+                <div
+                  className="w-full h-full transition-transform duration-500 hover:scale-110"
+                  style={{ background: 'gradient' in p ? p.gradient : undefined }}
+                />
+              )}
             </div>
 
             {/* Date */}

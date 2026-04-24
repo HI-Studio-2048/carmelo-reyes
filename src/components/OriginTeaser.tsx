@@ -1,22 +1,18 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import PolaroidGallery from './PolaroidGallery';
 
+const STORY_IMAGE = '/images/carmelo/story/story.png';
+
 export default function OriginTeaser() {
   return (
     <section className="py-24 px-6">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-        {/* Left — Image placeholder */}
-        <ScrollReveal>
-          <div className="aspect-video bg-[#141414] rounded-2xl border border-[#262626] flex items-center justify-center">
-            <span className="text-neutral-600 text-sm">Photo Coming Soon</span>
-          </div>
-        </ScrollReveal>
-
-        {/* Right — Story */}
-        <ScrollReveal delay={150}>
+      <div className="max-w-6xl mx-auto grid md:grid-cols-[minmax(0,1fr)_minmax(280px,420px)] gap-12 md:gap-14 lg:gap-20 md:items-start">
+        {/* Story copy — left on desktop; second on mobile */}
+        <ScrollReveal className="order-2 md:order-1">
           <div>
             {/* Section label */}
             <p className="text-xs tracking-[0.3em] uppercase text-[#E85D26] mb-6">
@@ -56,6 +52,23 @@ export default function OriginTeaser() {
               >
                 or start your own eSIM business &rarr;
               </a>
+            </div>
+          </div>
+        </ScrollReveal>
+
+        {/* Photo — portrait frame; right on desktop, first on mobile */}
+        <ScrollReveal className="order-1 md:order-2" delay={150}>
+          <div className="relative mx-auto w-full max-w-sm md:mx-0 md:max-w-none">
+            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-3xl bg-[#0a0a0a] ring-1 ring-white/[0.08] shadow-[0_24px_80px_-12px_rgba(0,0,0,0.85)]">
+              <Image
+                src={STORY_IMAGE}
+                alt="Carmelo Reyes"
+                fill
+                priority
+                unoptimized
+                className="object-cover object-[center_30%]"
+                sizes="(max-width: 768px) min(100vw,24rem), 420px"
+              />
             </div>
           </div>
         </ScrollReveal>
